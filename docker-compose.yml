@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+  v2ray:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: v2ray
+    environment:
+      - DOMAIN=v2ray-test.eastasia.cloudapp.azure.com
+      - EMAIL=test@example.com
+      - UUID=23189928-df88-440d-abf7-78382ba6966f
+    volumes:
+      - ./config:/config
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
