@@ -1,17 +1,31 @@
 version: "3.3"
 services:
+  crt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./private:/etc/v2ray
+    ports:
+      - 80:80
+
+  nginx:
   v2ray:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: v2ray
-    environment:
-      - DOMAIN=v2ray-test.eastasia.cloudapp.azure.com
-      - EMAIL=test@example.com
-      - UUID=23189928-df88-440d-abf7-78382ba6966f
+    env_file:
+      - .env
     volumes:
       - ./config:/config
+      -
     ports:
       - 80:80
       - 443:443
     restart: unless-stopped
+  haproxy:
+    image: "haproxy:2.5-alpine"
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+      - :/etc/ssl/private
