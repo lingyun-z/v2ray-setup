@@ -9,6 +9,8 @@ services:
     volumes:
       - /etc/haproxy:/usr/local/etc/haproxy
       - /etc/v2ray:/etc/ssl/private
+    user:
+      - root
     entrypoint: ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
     ports:
       - 443:443
