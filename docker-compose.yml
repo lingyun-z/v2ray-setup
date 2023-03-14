@@ -13,8 +13,8 @@ services:
     image: v2ray/official
     container_name: v2ray
     volumes:
-      - /etc/v2ray/config.json:/config.json
-    entrypoint: ["v2ray", "-config=config.json"]
+      - /etc/v2ray/config.json:/etc/v2ray/config.json
+    entrypoint: ["v2ray", "-config=/etc/v2ray/config.json"]
     expose:
       - 40001
     restart: unless-stopped
