@@ -16,6 +16,7 @@ services:
     container_name: v2ray
     volumes:
       - ./config:/config
+    entrypoint: ["v2ray", "-config=config.json"]
     expose:
       - 40001
     restart: unless-stopped
