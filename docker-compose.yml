@@ -3,7 +3,7 @@ services:
   crt:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: crt.Dockerfile
     volumes:
       - ./private:/etc/v2ray
     ports:
@@ -12,7 +12,7 @@ services:
   v2ray:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: v2ray.Dockerfile
     container_name: v2ray
     env_file:
       - .env
