@@ -9,7 +9,6 @@ services:
     ports:
       - 80:80
 
-  nginx:
   v2ray:
     build:
       context: .
@@ -19,7 +18,6 @@ services:
       - .env
     volumes:
       - ./config:/config
-      -
     ports:
       - 80:80
       - 443:443
