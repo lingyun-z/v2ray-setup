@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile: crt.Dockerfile
     volumes:
-      - ./private:/etc/v2ray
+      - /etc/v2ray:/etc/v2ray
     env_file:
       - .env
     ports:
@@ -27,4 +27,4 @@ services:
     image: "haproxy:2.5-alpine"
     volumes:
       - ./haproxy:/usr/local/etc/haproxy
-      - :/etc/ssl/private
+      - /etc/v2ray:/etc/ssl/private
