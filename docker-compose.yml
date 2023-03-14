@@ -6,6 +6,8 @@ services:
       dockerfile: crt.Dockerfile
     volumes:
       - ./private:/etc/v2ray
+    env_file:
+      - .env
     ports:
       - 80:80
 
@@ -14,8 +16,7 @@ services:
       context: .
       dockerfile: v2ray.Dockerfile
     container_name: v2ray
-    env_file:
-      - .env
+
     volumes:
       - ./config:/config
     ports:
